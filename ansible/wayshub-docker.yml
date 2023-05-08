@@ -1,0 +1,14 @@
+- become: true
+  gather_facts: false
+  hosts: appserver
+  tasks:
+    - name: pull image
+      docker_image:
+       name: nikymn/wayshub-frontend-16:latest
+       source: pull
+    - name: copy docker compose
+      copy:
+        src: /home/server/ansible/config/docker-compose.yml
+        dest: /home/devops
+    - name: running docker compose
+      command: docker compose up -d

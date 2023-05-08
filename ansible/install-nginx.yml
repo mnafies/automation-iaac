@@ -1,0 +1,21 @@
+- become: true
+  gather_facts: false
+  hosts: gateway
+  tasks:
+    - name: "Installing nginx"
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+    - name: copy rproxy.conf
+      copy:
+        src: /home/server/ansible/config/proxy/
+        dest: /etc/nginx/sites-enabled
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded

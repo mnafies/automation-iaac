@@ -1,0 +1,12 @@
+[appserver]
+103.49.239.40
+
+[gateway]
+103.139.193.91
+
+[monitoring]
+103.23.199.42
+
+[all:vars]
+ansible_user="nafis"
+ansible_pythone_interpreter=/usr/bin/python3

@@ -1,0 +1,13 @@
+- become: true
+  gather_facts: false
+  hosts: all
+  vars: 
+   - username: "devops"
+   - password: "$5$65Cdft2l3J/LIY7d$evc4M4CzKfvO4Xaht8VW7qXd7e4nUUeJO9wDIUaIVk5"
+
+  tasks: 
+    - name: "Creating User"
+      ansible.builtin.user: 
+        groups: sudo
+        name: "{{username}}"
+        password: "{{password}}"
